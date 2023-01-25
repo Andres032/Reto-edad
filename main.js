@@ -1,26 +1,80 @@
 new Vue({
     el: '#app',
-    data () {
-        return{
-            informacion: {
-                nombre: " ",
-                apellido: " ",
-                usuario: " ",
-                fechanacimiento: " "
-            }
-        }
-    },
+    data: ()=> ({
+        message: 'Hello Vue!',
+        nombre: " ",
+        apellido: " ",
+        usuario: " ",
+        fechaNacimiento: " ",
+        contraseña: "",
+        edad: "",
+        proyectos: []
 
+    }),
     methods: {
-        guardar(){
-            alert(this.informacion.nombre)
-            alert(this.informacion.apellido)
-            alert(this.informacion.usuario)
-            alert(this.informacion.fechanacimiento)
+        registrarInformacion() {
+            //Generar contraseña aleatoria
+            let numeros = "0123456789";
+            let letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let simbolos = ".?,;-_¡!¿*%$/()[]{}|@><";
+            let todo = numeros + letras + simbolos;
+
+            const crearcontraseña = (longitud) => {
+                let password = "";
+                for (let x = 0; x < longitud; x++) {
+                    let aleatorio = Math.floor(Math.random() * todo.length);
+                    password += todo.charAt(aleatorio);
+                }
+                return password;
+            };
             
+            
+            //console.log(crearcontraseña(8))
+            const age = this.calcularEdad(this.fechaNacimiento)
+
+            const proyecto = {
+                nombre: this.nombre,
+                apellido: this.apellido,
+                usuario: this.usuario,
+                fechaNacimiento: this.fechaNacimiento,
+                contraseña: crearcontraseña(8),
+                edad: age
+            }
+           let allRegister = this.proyectos.push(proyecto)
+           this.allList(allRegister)
+
+           
+
+            this.nombre = ""
+            this.apellido = ""
+            this.usuario = ""
+            this.fechaNacimiento = ""
+
+
+        },
+
+        calcularEdad(datebirth) {
+            let date = new Date(datebirth)
+            let current = new Date()
+            let age = current.getFullYear() - date.getFullYear();
+
+            date.setFullYear(current.getFullYear);
+
+            if(current < date){
+                --age;
+            }
+
+            return age;
+        },
+
+        allList(data){
+            return data;
         }
+
+        
+
+        
+
     }
 
-   
-    
 })

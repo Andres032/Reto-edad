@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
 
-    <div id="app">
-       <h1>{{informacion}}</h1>
-       <form name="form" id="form" v-on:submit.prevent="guardar()">
-        <input type="text" name="nombre"  v-model="informacion.nombre" placeholder="Nombre">
-       <input type="text" name="apellido" placeholder="Apellidos" v-model="informacion.apellido">
-       <input type="text" name="usuario" placeholder="Usuario" v-model="informacion.usuario">
-       <input type="date" id="fechanacimiento" min="1930-01-01" max="2023-12-31" v-model="informacion.fechanacimiento">
-        <input type="submit" value="Enviar">
-       </form>
-       
-    </div>
-
+  <div id="app">
+    <h1>Hola mundo</h1>
+    <form @submit.prevent=" registrarInformacion">
+      <input v-model="nombre" type="text" placeholder="Nombre" >
+      <input v-model="apellido" type="text" placeholder="Apellido">
+      <input v-model="usuario" type="text" placeholder="Usuario" >
+      <input v-model="fechaNacimiento" type="date" id="fechaNacimiento" min="1930-01-01" max="2023-12-31">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+  <br>
+  <hr />
+  <table border="1">
+    <tr><td>#</td><td>Nombre</td><td>Apellido</td><td>Usuario</td><td>Fecha de Nacimiento</td></tr>
+    <template>
+    <tr v-for="(proyecto, index) in proyectos" :key="index">
+      <td> {{index}} </td>
+      <td> {{proyecto.nombre}} </td>
+      <td> {{proyecto.apellido}} </td>
+      <td> {{proyecto.usuario}} </td>
+      <td> {{proyecto.fechaNacimiento}} </td>
+    </tr>
+  </template>
+  </table>    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="main.js"></script>
+
+
 </html>

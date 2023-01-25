@@ -1,11 +1,26 @@
 new Vue({
     el: '#app',
-    data: {
-        message: 'Hello Vue!'
+    data () {
+        return{
+            informacion: {
+                nombre: " ",
+                apellido: " ",
+                usuario: " ",
+                fechanacimiento: " "
+            }
+        }
     },
 
-    methods:{
-        
+    methods: {
+        guardar(){
+            alert(this.informacion.nombre)
+            alert(this.informacion.apellido)
+            alert(this.informacion.usuario)
+            alert(this.informacion.fechanacimiento)
+            
+        }
     }
+
+   
     
 })

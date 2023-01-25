@@ -9,10 +9,17 @@
 <body>
 
     <div id="app">
-       <h1>HOLA MUNDO</h1>
+       <h1>{{informacion}}</h1>
+       <form name="form" id="form" v-on:submit.prevent="guardar()">
+        <input type="text" name="nombre"  v-model="informacion.nombre" placeholder="Nombre">
+       <input type="text" name="apellido" placeholder="Apellidos" v-model="informacion.apellido">
+       <input type="text" name="usuario" placeholder="Usuario" v-model="informacion.usuario">
+       <input type="date" id="fechanacimiento" min="1930-01-01" max="2023-12-31" v-model="informacion.fechanacimiento">
+        <input type="submit" value="Enviar">
+       </form>
+       
     </div>
 
-    
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="main.js"></script>
